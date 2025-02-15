@@ -1,12 +1,16 @@
+/* Color scheme for the resume */
 :root {
-    --primary-color: #1a1a1a;    /* Near-black for main text */
-    --secondary-color: #4a4a4a;  /* Dark gray for secondary text */
-    --accent-color: #2c3e50;     /* Navy blue for accents */
+    --primary-color: #000000;    /* Main text - pure black for readability */
+    --secondary-color: #1a2530;  /* Important elements - darker navy for emphasis */
+    --tertiary-color: #455a64;   /* Less important text - darker slate for hierarchy */
+    --accent-color: #2c3e50;     /* Accents - navy blue for visual interest */
     --container-bg: #ffffff;
-    --border-color: #e0e0e0;     /* Slightly darker gray for borders */
-    --section-spacing: 20px;    /* Consistent section spacing */
+    --border-color: #e0e0e0;     /* Subtle borders - light gray */
+    --section-spacing: 20px;    /* Keep sections nicely spaced */
+    --highlight-color: #34495e;  /* For hover effects and emphasis */
 }
 
+/* Let's reset everything to start fresh */
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +18,7 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* NEW: Consistent font sizes for paragraphs */
+/* Making paragraphs consistent and readable */
 p {
     font-size: 14px;
     line-height: 1.3;
@@ -22,30 +26,33 @@ p {
     color: var(--secondary-color);
 }
 
+/* Basic body setup */
 body {
     background: #ffffff;
     font-size: 14px;
     color: var(--primary-color);
-    max-width: 800px;  /* Slightly reduce max-width for better PDF fit */
+    max-width: 800px;
     margin: 0 auto;
-    padding: 25px 15px;
+    padding: 15px 15px 25px;
     letter-spacing: 0.2px;
 }
 
+/* Main container for the resume */
 .resume-container {
     background-color: var(--container-bg);
 }
 
-/* Header styling with center alignment */
+/* Making the header look clean and centered */
 .header {
     border-bottom: none;
     position: relative;
-    margin-bottom: 35px;
-    padding: 0 0 25px 0;
+    margin-bottom: 25px;
+    padding: 0 0 20px 0;
     text-align: center;
     color: var(--primary-color);
 }
 
+/* Name styling - big and bold */
 .header h1 {
     font-size: 28px;
     margin-bottom: 12px;
@@ -56,6 +63,7 @@ body {
     -webkit-print-color-adjust: exact;
 }
 
+/* Nice gradient line under the header */
 .header::after {
     content: "";
     position: absolute;
@@ -73,6 +81,7 @@ body {
     );
 }
 
+/* Contact info layout */
 .contact {
     font-size: 13px;
     margin-top: 12px;
@@ -84,14 +93,22 @@ body {
     -webkit-print-color-adjust: exact;
 }
 
+/* Making contact links look nice */
 .contact a {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
+    transition: color 0.2s ease;
 }
 
+/* Subtle hover effect for links */
+.contact a:hover {
+    color: var(--highlight-color);
+}
+
+/* Contact icons styling */
 .contact a i {
     margin-right: 4px;
     font-size: 14px;
@@ -99,25 +116,28 @@ body {
     -webkit-print-color-adjust: exact;
 }
 
-/* Remove the bullet points between contact items and use spacing instead */
+/* Using spacing instead of bullets between contact items */
 .contact a:not(:last-child)::after {
     display: none;
 }
 
-/* Enhanced section styling */
+/* Section styling for better organization */
 .section {
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     position: relative;
 }
 
+/* No margin for the last section */
 .section:last-child {
     margin-bottom: 0;
 }
 
+/* Section headings spacing */
 .section h2 {
     margin-bottom: 12px;
 }
 
+/* Subtle divider between sections */
 .section:not(:last-child)::after {
     content: "";
     position: absolute;
@@ -130,23 +150,28 @@ body {
         to right,
         transparent,
         var(--border-color) 15%,
-        var(--accent-color) 50%,
+        var(--secondary-color) 50%,
         var(--border-color) 85%,
         transparent
     );
     opacity: 0.8;
 }
 
-/* Enhanced heading style */
+/* No line after the summary - keeping it clean */
+.section:nth-child(2)::after {
+    display: none;
+}
+
+/* Making section headings stand out */
 h2 {
     font-size: 16px;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     position: relative;
     padding-bottom: 4px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 h2::after {
@@ -165,6 +190,22 @@ h2::after {
     border-radius: 2px;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
+}
+
+/* Project subheading style */
+h3 {
+    font-size: 14px;
+    color: var(--secondary-color);
+    margin: 12px 0 8px 0;
+    letter-spacing: 0.8px;
+    position: relative;
+    font-weight: 550;
+    opacity: 0.95;
+}
+
+/* Adjust first h3 margin */
+.projects-grid:first-of-type {
+    margin-top: 5px;
 }
 
 /* Job and education item styling */
@@ -192,24 +233,27 @@ h2::after {
 
 .job-title {
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-size: 14px;
     letter-spacing: 0.5px;
     padding-right: 120px; /* Space for date */
     flex: 1;
 }
 
+.date, .company, .company-description {
+    color: var(--tertiary-color);
+}
+
 .date {
     position: absolute;
     top: 0;
     right: 0;
-    color: var(--secondary-color);
     font-size: 12px;
     white-space: nowrap;
 }
 
 .company {
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
     margin-bottom: 2px;
     font-size: 12px;
     text-align: left;
@@ -225,17 +269,16 @@ h2::after {
     margin: 4px 0 8px 0;
     text-align: left;
     font-size: 12px;
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
 }
 
 .company-details .company-name {
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 .company-details .company-description {
     font-style: italic;
-    color: var(--secondary-color);
     font-size: 11px;
     margin-top: 2px;
 }
@@ -250,7 +293,7 @@ h2::after {
 .company-line .separator {
     content: "•";
     margin: 0 8px;
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
 }
 
 ul {
@@ -265,6 +308,7 @@ li {
     line-height: 1.3;
     letter-spacing: 0.2px;
     position: relative;
+    font-weight: 400;
 }
 
 .skills-grid {
@@ -276,8 +320,8 @@ li {
 
 /* Enhanced skill categories */
 .skill-category {
-    margin-bottom: 8px;
-    padding: 6px 8px;
+    margin-bottom: 6px;
+    padding: 4px 6px;
     border: 1px solid var(--border-color);
     background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
     border-radius: 6px;
@@ -305,7 +349,7 @@ li {
 
 .skill-title {
     font-weight: 600;
-    color: var(--accent-color);
+    color: var(--secondary-color);
     margin-bottom: 6px;
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -320,17 +364,18 @@ li {
 }
 
 .skill-category ul li {
-    margin: 2px 0;
+    margin: 1px 0;
     font-size: 12px;
-    color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: 400;
 }
 
 /* Projects grid styling */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 15px;
+    gap: 8px;
+    margin-bottom: 12px;
 }
 
 /* Make featured project take full width and appear at top */
@@ -340,7 +385,7 @@ li {
 }
 
 .project-item {
-    padding: 6px 8px;
+    padding: 4px 6px;
     border: 1px solid var(--border-color);
     background: linear-gradient(to right, #ffffff, #f8f9fa);
     border-radius: 6px;
@@ -375,7 +420,7 @@ li {
 .project-item .job-title {
     font-size: 11.5px;
     margin-bottom: 4px;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     display: block;
     font-weight: 600;
     white-space: nowrap;
@@ -389,7 +434,7 @@ li {
     position: absolute;
     right: 0;
     top: 1px;
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
     font-size: 10.5px;
     white-space: nowrap;
     min-width: 35px;
@@ -402,10 +447,11 @@ li {
 }
 
 .project-item li {
-    margin-bottom: 2px;
-    line-height: 1.25;
-    color: var(--secondary-color);
+    margin-bottom: 1px;
+    line-height: 1.2;
+    color: var(--primary-color);
     font-size: 11px;
+    font-weight: 400;
 }
 
 /* Print styles for projects */
@@ -413,8 +459,8 @@ li {
     .projects-grid {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-        margin-bottom: 0 !important;
+        gap: 6px !important;
+        margin-bottom: 6px !important;
         page-break-inside: avoid !important;
     }
 
@@ -427,7 +473,7 @@ li {
     .project-item {
         break-inside: avoid !important;
         background: transparent !important;
-        padding: 6px 8px !important;
+        padding: 4px 6px !important;
         border: 1px solid var(--border-color) !important;
     }
 
@@ -446,7 +492,12 @@ li {
 
     .project-item li {
         font-size: 11px !important;
-        line-height: 1.25 !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Adjust page margins */
+    @page {
+        margin: 0.285in 0.385in;  /* Middle ground between 0.27in/0.37in and 0.3in/0.4in */
     }
 }
 
@@ -462,13 +513,13 @@ li {
 .education-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-    margin-bottom: 15px;
+    gap: 15px;
+    margin-bottom: 12px;
 }
 
 .education-item {
     position: relative;
-    padding: 12px 15px;
+    padding: 8px 12px;
     background: linear-gradient(to right, #ffffff, #f8f9fa);
     border: 1px solid var(--border-color);
     border-radius: 6px;
@@ -478,48 +529,50 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .edu-degree {
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-size: 14px;
     letter-spacing: 0.5px;
-    padding-right: 100px;
+    padding-right: 90px;
 }
 
 .edu-date {
-    color: var(--secondary-color);
-    font-size: 12px;
+    color: var(--tertiary-color);
+    font-size: 11px;
     white-space: nowrap;
     position: absolute;
-    right: 15px;
-    top: 12px;
+    right: 12px;
+    top: 8px;
 }
 
 .edu-school {
-    font-size: 13px;
-    color: var(--primary-color);
-    margin-bottom: 4px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    font-size: 12px;
+    margin-bottom: 2px;
 }
 
 .edu-details {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--secondary-color);
+    gap: 4px;
+    font-size: 11px;
+    color: var(--tertiary-color);
 }
 
 .edu-major {
-    color: var(--accent-color);
-    font-weight: 500;
+    color: var(--secondary-color);
+    font-weight: 600;
 }
 
 .edu-separator {
     color: var(--border-color);
+    font-weight: 600;
 }
 
 .edu-minor {
@@ -527,7 +580,8 @@ li {
 }
 
 .edu-gpa {
-    font-weight: 500;
+    font-weight: 600;
+    color: var(--secondary-color);
 }
 
 /* Print styles for education */
@@ -557,7 +611,7 @@ li {
 
     /* Section spacing */
     .section {
-        margin-bottom: 32px !important;
+        margin-bottom: 22px !important;
     }
 
     .section:last-child {
@@ -565,14 +619,14 @@ li {
     }
 
     .section h2 {
-        margin-bottom: 12px !important;
+        margin-bottom: 16px !important;
     }
 
     /* Education grid print styles */
     .education-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        gap: 20px !important;
+        gap: 22px !important;
         margin-bottom: 0 !important;
         page-break-inside: avoid !important;
     }
@@ -580,7 +634,7 @@ li {
     .education-item {
         break-inside: avoid !important;
         background: transparent !important;
-        padding: 10px 12px !important;
+        padding: 12px 14px !important;
         border: 1px solid var(--border-color) !important;
     }
 
@@ -618,7 +672,7 @@ li {
 
     /* Job spacing in print */
     .job {
-        margin-bottom: 16px !important;
+        margin-bottom: 14px !important;
     }
 
     .job:last-child {
@@ -689,7 +743,7 @@ li {
 .section:nth-child(3) ul li::before {
     content: "•";
     margin: 0 8px;
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
 }
 
 /* Make professional summary more compact */
@@ -736,23 +790,22 @@ h2 {
 
     /* Adjust page margins */
     @page {
-        margin: 0.3in 0.4in;
-        size: letter;
+        margin: 0.285in 0.385in;  /* Middle ground between 0.27in/0.37in and 0.3in/0.4in */
     }
 
     /* Header adjustments */
     .header {
-        margin-bottom: 20px;
-        padding-bottom: 15px;
+        margin-bottom: 24px !important;
+        padding-bottom: 20px !important;
     }
 
     /* Section spacing */
     .section {
-        margin-bottom: 24px;
+        margin-bottom: 22px !important;
     }
 
     .section h2 {
-        margin-bottom: 10px;
+        margin-bottom: 16px !important;
     }
 
     /* Ensure last section doesn't have extra space */
@@ -761,8 +814,8 @@ h2 {
     }
 
     .job {
-        margin-bottom: 8px;
-        padding-bottom: 4px;
+        margin-bottom: 14px !important;
+        padding-bottom: 7px !important;
     }
 
     h2 {
@@ -771,21 +824,25 @@ h2 {
     }
 
     ul {
-        margin: 2px 0;
+        margin: 4px 0 !important;
     }
 
     li {
-        margin-bottom: 1px;
+        margin-bottom: 3px !important;
     }
 
     .projects-grid {
-        gap: 6px;
-        margin-bottom: 8px;
+        gap: 11px !important;  /* Middle ground between 10px and 12px */
+        margin-bottom: 13px !important;  /* Middle ground between 12px and 14px */
     }
 
     .skills-grid {
-        gap: 4px;
-        margin-bottom: 8px;
+        gap: 7px !important;  /* Middle ground between 6px and 8px */
+        margin-bottom: 13px !important;  /* Middle ground between 12px and 14px */
+    }
+
+    .skill-category {
+        padding: 6px 8px !important;  /* Middle ground between 5px/7px and 7px/9px */
     }
 
     /* Remove forced page breaks */
@@ -817,13 +874,13 @@ h2 {
     }
 
     .projects-grid {
-        gap: 6px;
-        margin-bottom: 8px;
+        gap: 7px !important;
+        margin-bottom: 8px !important;
     }
 
     .skills-grid {
-        gap: 4px;
-        margin-bottom: 8px;
+        gap: 4px !important;
+        margin-bottom: 8px !important;
     }
 
     /* Education print styles */
